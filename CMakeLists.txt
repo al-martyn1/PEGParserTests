@@ -70,10 +70,13 @@ endif()
 set(COMMON_UMBA_OPTIONS "BIGOBJ" "UTF8" "PEDANTIC" "WERR") # "PEDANTIC"/"WALL" "WERR"
 
 
-#set(TARGET PEGParserTests)
-#add_executable(${TARGET} "${SRC_ROOT}/PEGParserTests/umba-template.cpp" "${headers}")
-#umba_add_target_options(${TARGET} ${COMMON_UMBA_OPTIONS} "CONSOLE") 
-#target_link_libraries(${TARGET} PRIVATE "${PLATFORM_LIBS}" "${COMMON_LIBS}")
+add_compile_definitions("HAS_UMBA")
+
+
+# set(TARGET PEGParserTests)
+# add_executable(${TARGET} "${SRC_ROOT}/PEGParserTests/umba-template.cpp" "${headers}")
+# umba_add_target_options(${TARGET} ${COMMON_UMBA_OPTIONS} "CONSOLE") 
+# target_link_libraries(${TARGET} PRIVATE "${PLATFORM_LIBS}" "${COMMON_LIBS}")
 
 
 set(TARGET pegpt-test-001)
