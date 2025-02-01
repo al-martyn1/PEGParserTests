@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.21.0)
-project(umba-template VERSION 0.1.0 LANGUAGES C CXX)
+project(PEGParserTests VERSION 0.1.0 LANGUAGES C CXX)
 
 # set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
@@ -16,9 +16,17 @@ set(UMBA_STATIC_RUNTIME ON)
 set(UMBA_USE_BOOST      ON)
 
 include(${CMAKE_CURRENT_LIST_DIR}/.cmake/umba.cmake)
-
+include(${CMAKE_CURRENT_LIST_DIR}/.cmake/CPM.cmake)
 
 include_directories(${LIB_ROOT})
+
+CPMAddPackage(
+  NAME PEGParser
+  VERSION 2.1.1
+  GITHUB_REPOSITORY TheLartians/PEGParser
+)
+
+# target_link_libraries(myProject PEGParser::PEGParser)
 
 # Import libraries here
 # add_subdirectory(${LIB_ROOT}/encoding)
@@ -41,6 +49,7 @@ include_directories(${LIB_ROOT})
 
 
 # Configure libraries here
+set(COMMON_LIBS PEGParser::PEGParser)
 # set(COMMON_LIBS encoding::encoding marty_cpp::marty_cpp sfmt::sfmt umba::umba)
 # set(PUGIXML_LIB pugixml::pugixml marty_pugixml::marty_pugixml)
 # set(JSON_YAML_LIB nlohmann_json::nlohmann_json yaml-cpp::yaml-cpp)
@@ -61,8 +70,50 @@ endif()
 set(COMMON_UMBA_OPTIONS "BIGOBJ" "UTF8" "PEDANTIC" "WERR") # "PEDANTIC"/"WALL" "WERR"
 
 
-set(TARGET umba-template)
-add_executable(${TARGET} "${SRC_ROOT}/umba-template/umba-template.cpp" "${headers}")
+#set(TARGET PEGParserTests)
+#add_executable(${TARGET} "${SRC_ROOT}/PEGParserTests/umba-template.cpp" "${headers}")
+#umba_add_target_options(${TARGET} ${COMMON_UMBA_OPTIONS} "CONSOLE") 
+#target_link_libraries(${TARGET} PRIVATE "${PLATFORM_LIBS}" "${COMMON_LIBS}")
+
+
+set(TARGET pegpt-test-001)
+add_executable(${TARGET} "${SRC_ROOT}/PEGParserTests/pegpt-test-001.cpp" "${headers}")
+umba_add_target_options(${TARGET} ${COMMON_UMBA_OPTIONS} "CONSOLE") 
+target_link_libraries(${TARGET} PRIVATE "${PLATFORM_LIBS}" "${COMMON_LIBS}")
+
+
+set(TARGET pegpt-test-calculator)
+add_executable(${TARGET} "${SRC_ROOT}/PEGParserTests/pegpt-test-calculator.cpp" "${headers}")
+umba_add_target_options(${TARGET} ${COMMON_UMBA_OPTIONS} "CONSOLE") 
+target_link_libraries(${TARGET} PRIVATE "${PLATFORM_LIBS}" "${COMMON_LIBS}")
+
+
+set(TARGET pegpt-test-calculator_sequental)
+add_executable(${TARGET} "${SRC_ROOT}/PEGParserTests/pegpt-test-calculator_sequental.cpp" "${headers}")
+umba_add_target_options(${TARGET} ${COMMON_UMBA_OPTIONS} "CONSOLE") 
+target_link_libraries(${TARGET} PRIVATE "${PLATFORM_LIBS}" "${COMMON_LIBS}")
+
+
+set(TARGET pegpt-test-calculator_visitor)
+add_executable(${TARGET} "${SRC_ROOT}/PEGParserTests/pegpt-test-calculator_visitor.cpp" "${headers}")
+umba_add_target_options(${TARGET} ${COMMON_UMBA_OPTIONS} "CONSOLE") 
+target_link_libraries(${TARGET} PRIVATE "${PLATFORM_LIBS}" "${COMMON_LIBS}")
+
+
+set(TARGET pegpt-test-json_parser)
+add_executable(${TARGET} "${SRC_ROOT}/PEGParserTests/pegpt-test-json_parser.cpp" "${headers}")
+umba_add_target_options(${TARGET} ${COMMON_UMBA_OPTIONS} "CONSOLE") 
+target_link_libraries(${TARGET} PRIVATE "${PLATFORM_LIBS}" "${COMMON_LIBS}")
+
+
+set(TARGET pegpt-test-python_indentation)
+add_executable(${TARGET} "${SRC_ROOT}/PEGParserTests/pegpt-test-python_indentation.cpp" "${headers}")
+umba_add_target_options(${TARGET} ${COMMON_UMBA_OPTIONS} "CONSOLE") 
+target_link_libraries(${TARGET} PRIVATE "${PLATFORM_LIBS}" "${COMMON_LIBS}")
+
+
+set(TARGET pegpt-test-type_checker)
+add_executable(${TARGET} "${SRC_ROOT}/PEGParserTests/pegpt-test-type_checker.cpp" "${headers}")
 umba_add_target_options(${TARGET} ${COMMON_UMBA_OPTIONS} "CONSOLE") 
 target_link_libraries(${TARGET} PRIVATE "${PLATFORM_LIBS}" "${COMMON_LIBS}")
 
