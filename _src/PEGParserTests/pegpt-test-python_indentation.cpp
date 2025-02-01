@@ -3,7 +3,7 @@
  * blocks.
  */
 
-#include <peg_parser/generator.h>
+#include "peg_parser_generator.h"
 
 #include <algorithm>
 #include <iostream>
@@ -96,11 +96,13 @@ int main() {
       Blocks blocks;
       blockParser.run(input, blocks);
       cout << "matched " << blocks.size() << " blocks." << endl;
+#include "umba/warnings/push_disable_C4365.h"
       for (auto b : blocks) {
         cout << "- from line " << std::count(input.begin(), input.begin() + b.begin, '\n') + 1;
         cout << " to " << std::count(input.begin(), input.begin() + b.begin + b.length, '\n')
              << endl;
       }
+#include "umba/warnings/pop.h"
     } catch (peg_parser::SyntaxError &error) {
       auto syntax = error.syntax;
       cout << "  ";

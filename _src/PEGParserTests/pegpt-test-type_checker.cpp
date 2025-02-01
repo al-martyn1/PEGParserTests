@@ -12,7 +12,7 @@
  *  `x * y`  -> now parsed as a variable definition (pointer to `y` of type `x`)
  */
 
-#include <peg_parser/generator.h>
+#include "peg_parser_generator.h"
 
 #include <iostream>
 #include <unordered_set>

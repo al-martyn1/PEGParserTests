@@ -3,7 +3,7 @@
  * command-line calculator and use a visitor pattern to evaluate the result.
  */
 
-#include <peg_parser/generator.h>
+#include "peg_parser_generator.h"
 
 #include <cmath>
 #include <iostream>
@@ -34,7 +34,9 @@ int main() {
     void visitAssignment(Expression name, Expression value) {
       result = (variables[name.string()] = getValue(value));
     }
+#include "umba/warnings/push_disable_C4244.h"
     void visitNumber(Expression value) { result = stod(value.string()); }
+#include "umba/warnings/pop.h"
   };
 
   peg_parser::ParserGenerator<void, Visitor &> calculator;

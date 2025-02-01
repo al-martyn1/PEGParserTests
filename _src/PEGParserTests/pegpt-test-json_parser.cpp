@@ -3,7 +3,7 @@
  * JSON. https://en.wikipedia.org/wiki/JSON#Data_types_and_syntax
  */
 
-#include <peg_parser/generator.h>
+#include "peg_parser_generator.h"
 
 #include <algorithm>
 #include <iostream>

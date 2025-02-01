@@ -100,10 +100,10 @@ umba_add_target_options(${TARGET} ${COMMON_UMBA_OPTIONS} "CONSOLE")
 target_link_libraries(${TARGET} PRIVATE "${PLATFORM_LIBS}" "${COMMON_LIBS}")
 
 
-set(TARGET pegpt-test-json_parser)
-add_executable(${TARGET} "${SRC_ROOT}/PEGParserTests/pegpt-test-json_parser.cpp" "${headers}")
-umba_add_target_options(${TARGET} ${COMMON_UMBA_OPTIONS} "CONSOLE") 
-target_link_libraries(${TARGET} PRIVATE "${PLATFORM_LIBS}" "${COMMON_LIBS}")
+# set(TARGET pegpt-test-json_parser)
+# add_executable(${TARGET} "${SRC_ROOT}/PEGParserTests/pegpt-test-json_parser.cpp" "${headers}")
+# umba_add_target_options(${TARGET} ${COMMON_UMBA_OPTIONS} "CONSOLE") 
+# target_link_libraries(${TARGET} PRIVATE "${PLATFORM_LIBS}" "${COMMON_LIBS}")
 
 
 set(TARGET pegpt-test-python_indentation)

@@ -8,7 +8,7 @@
  * sequentially for optimal performance.
  */
 
-#include <peg_parser/generator.h>
+#include "peg_parser_generator.h"
 
 #include <cmath>
 #include <iostream>
